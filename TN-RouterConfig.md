@@ -47,6 +47,18 @@ exit
 
 end
 
-! ============================================
-! EINDE CONFIGURATIE
-! ============================================
+! extra
+enable
+configure terminal
+
+ip access-list extended GUEST-RESTRICT
+deny ip 192.168.1.64 0.0.0.31 192.168.1.0 0.0.0.31
+deny ip 192.168.1.64 0.0.0.31 192.168.1.32 0.0.0.31
+permit ip any any
+exit
+
+interface GigabitEthernet0/0/0.30
+ip access-group GUEST-RESTRICT in
+exit
+
+end
