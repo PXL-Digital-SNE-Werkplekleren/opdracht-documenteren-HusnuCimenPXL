@@ -12,6 +12,17 @@ hostname TN-SW-V1
 ! Wachtwoord beveiliging
 enable secret secret
 
+ip domain-name technova.local
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+
+username admin secret secret
+
+line vty 0 15
+login local
+transport input ssh
+exit
+
 line console 0
 password secret
 login

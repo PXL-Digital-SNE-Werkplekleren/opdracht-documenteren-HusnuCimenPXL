@@ -22,6 +22,17 @@ password secret
 login
 exit
 
+ip domain-name technova.local
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+
+username admin secret secret
+
+line vty 0 4
+login local
+transport input ssh
+exit
+
 ! Hoofdinterface activeren
 interface GigabitEthernet0/0/0
 no shutdown
